@@ -3,10 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: "https://48p1r2roz4.sse.codesandbox.io",
+  cache: new InMemoryCache()
+});
 
 ReactDOM.render(
   <React.StrictMode>
+  <ApolloProvider client={client}>  
+    <h1>List of Currencies</h1>
     <App />
+  </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
