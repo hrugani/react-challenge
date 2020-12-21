@@ -6,8 +6,13 @@ import reportWebVitals from './reportWebVitals'
 import { ApolloProvider, ApolloClient, InMemoryCache, ApolloLink, HttpLink, from} from '@apollo/client'
 
 
-let GITHUB_GRAPHQL_URL = 'https://api.github.com/graphql'
-let TOKEN = '07c4ffcf0cc9307f0207e51a2f9648699157b83f'
+const GITHUB_GRAPHQL_URL = 'https://api.github.com/graphql'
+
+// TOKEN must have a valid personal token value from Github
+// how does this tokem look like: 07c4ffcf0cc9307f0207e51a2f9648699157b83f
+// 40 characteres 
+const GITHUB_PERSONAL_ACCESS_TOKEN = 'token value'
+
 
 const httpLink = new HttpLink({uri: GITHUB_GRAPHQL_URL})
 
@@ -16,7 +21,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
-      authorization: `token ${TOKEN}`,
+      authorization: `token ${GITHUB_PERSONAL_ACCESS_TOKEN}`,
     }
   }));
   return forward(operation);

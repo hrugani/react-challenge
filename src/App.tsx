@@ -44,6 +44,7 @@ const columns = [
   }
 ];
 
+// Creates the main screen of the App with an AntD table view
 function App() {
   const { loading, error, data } = useQuery(LIST_OF_PORTS);
 

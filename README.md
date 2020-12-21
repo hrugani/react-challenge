@@ -1,22 +1,38 @@
-# react-challenge
-Solving the React Challenge.
+***
+# React-Challenge
+The project aims to solve the React Challenge. 
+A summary of the challenge will be described below in this document.
 
-## How-To run the project
+>The flow of work was organized in that way:
+This repo has 2 branches: master and development.
+All the steps of solving the challenge were loaded in the development branch. Atomic-commits were loaded reporting the main feature implemented in each one.
+The last commit of the development branch was merged in the master.
+
+### How-To run the project (in docker/docker-compose)
 - First of all, install docker and docker-compose
-- Running in development mode:
-  `docker-compose up -d --build`
-- Running in production mode:
-  `docker-compose -f docker-compose.prod.yml up -d --build`
+- In development mode:  
+   `docker-compose up -d --build`
+- In production mode:  
+   `docker-compose -f docker-compose.prod.yml up -d --build`
 
+### How-To run locally the project 
+- In this option, you don't need Docker neither Docker-Compose
+- Running in development mode with hot-realod:
+  `yarn start`
 
----
-
-## Challenge description:
+### How-To build the project for deployment: 
+- run the command:   
+  `yarn build`
+  
+  
+    
+***    
+# Challenge summary description:
 write a simple React Application that renders a list of react repositories in the table view of your choice. The following data should be shown:
 
-- repo-name
-- stars-counter
-- forks-counter
+- name  ===> (=repository name)
+- stars ===> (=stars counter)
+- forks ===> (=forks-counter)
 
 
 ## Constraint conditions
@@ -32,23 +48,48 @@ write a simple React Application that renders a list of react repositories in th
 ## Desirable:
 - pagination
 - flexible search
-- Tests covering (as much as you can)
-- Dockerize it!
+- Tests covering as much as you can
+- Dockerize the app.
 
----
----
-## ADDITIONAL INFOs
+***
+# Additional Info
 
 
-# Getting Started with Create React App
+This project was bootstrapped with the command line [create-react-app](https://github.com/facebook/create-react-app).  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Security
+For security reasons, you must create a personal access token in Github. Only through it, you could access the Github API properly.
+After that, you also have to change one line of code assigning the value of the token to one constant called  
+GITHUB_PERSONAL_ACCESS_TOKEN (in the "index.tsx" file).
 
-In the project directory, you can run:
+Here is the link you should use to create your Personal Acess Token no Github:
+https://github.com/settings/tokens
 
-### `yarn start`
+Why is that weird thing necessary? 
+Store tokens hardcoded within source files is a bad practice (Security)
+In actual systems, we would use 3 layers for that.  
+The right place to solve that kind of problem is on the backend side.
+One solution possible, only to mention one of them,  is to store the token in environment variables in the server. 
+
+As this app will run in the browser. We can't access the values of environment variables.  
+This App doesn't have a server system that is owned by us.  
+It accesses a server, but this server is owned by Github where we don't have access.
+   
+### Domain Driven Design - DDD
+
+We structured our code in 3 master folders: VisualLayer, BusinessLayer, and CommunicationLayer.
+The reason for that was it offers a direct way of think and organize the code. There isn't only one correct way to apply DDD.  
+The goal is it must be clear. Should offer a simple way to navigate throughout the project and a quick reference of where to create new files for coding.
+Readability, Maintainability, extensibility.
+Example: whether you need to write a new screen or component that models a part of a screen it is intuitive creates the new code inside the visual layer folder. It is important to avoid wast time studying and discovering how is the better way to insert a file or where a specific feature was implemented.
+
+
+***
+# Scripts
+
+In the project directory, you can run:  
+`yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
