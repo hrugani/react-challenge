@@ -1,19 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+import reportWebVitals from './reportWebVitals'
+import { ApolloProvider, ApolloClient, InMemoryCache, ApolloLink, HttpLink, from} from '@apollo/client'
+
+
+let GITHUB_GRAPHQL_URL = 'https://api.github.com/graphql'
+let TOKEN = '07c4ffcf0cc9307f0207e51a2f9648699157b83f'
+
+const httpLink = new HttpLink({uri: GITHUB_GRAPHQL_URL})
+
+const authMiddleware = new ApolloLink((operation, forward) => {
+  // add the authorization to the headers
+  operation.setContext(({ headers = {} }) => ({
+    headers: {
+      ...headers,
+      authorization: `token ${TOKEN}`,
+    }
+  }));
+  return forward(operation);
+})
 
 const client = new ApolloClient({
-  uri: "https://48p1r2roz4.sse.codesandbox.io",
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  link: from([authMiddleware, httpLink])
 });
 
 ReactDOM.render(
   <React.StrictMode>
   <ApolloProvider client={client}>  
-    <h1>List of Currencies</h1>
+    <h1>List of React Repositories</h1>
     <App />
   </ApolloProvider>
   </React.StrictMode>,
