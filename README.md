@@ -20,20 +20,20 @@ Here is the link you should use to create your Personal Acess Token in Github si
 https://github.com/settings/tokens
 
 
-### How-To run the project (in docker/docker-compose)
+### How-To run the project (using docker/docker-compose)
 - First of all, install docker and docker-compose
-- In development mode:  
+- to run in development mode:  
    `docker-compose up -d --build`
-- In production mode:  
+- to run production mode:  
    `docker-compose -f docker-compose.prod.yml up -d --build`
 
 ### How-To run locally the project 
 - In this option, you don't need Docker neither Docker-Compose
-- Running in development mode with hot-realod:
+- Simply run the following command at the root folder of the project:  
   `yarn start`
 
 ### How-To build the project for deployment: 
-- run the command:   
+- run the command at the root folder of the project:     
   `yarn build`
   
   
@@ -50,7 +50,7 @@ write a simple React Application that renders a list of react repositories in th
 ## Constraint conditions
 - Must use the typescript programming language and reac-hooks
 - Free to use boilerplate configurations softwares (like create-react-app)
-- Feel to use any design framework (like AntD)
+- Free to use any design framework (like AntD)
 - Don't leave unused dependencies/scripts
 - Don't mock API reposnses
 - Must use Github Graphql API v4 to fetch the list of repositories
