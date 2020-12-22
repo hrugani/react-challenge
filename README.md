@@ -6,7 +6,19 @@ A summary of the challenge will be described below in this document.
 >The flow of work was organized in that way:
 This repo has 2 branches: master and development.
 All the steps of solving the challenge were loaded in the development branch. Atomic-commits were loaded reporting the main feature implemented in each one.
-The last commit of the development branch was merged in the master.
+The last commit of the development branch was merged in the master.  
+
+### Important Security information 
+>Before execute:  
+For security reasons, you must create a personal access token in Github.  
+Only through it, you could access the Github API properly.  
+After that, you also have to alter the file .env located in project root folder.  
+The .env file has only 1 line that seems like this:  
+REACT_APP_GITHUB_TOKEN= \<TOKEN\>  
+You have to replace \<TOKEN\> term by the personal access token value you have just created.  
+Here is the link you should use to create your Personal Acess Token in Github site:  
+https://github.com/settings/tokens
+
 
 ### How-To run the project (in docker/docker-compose)
 - First of all, install docker and docker-compose
@@ -57,24 +69,6 @@ write a simple React Application that renders a list of react repositories in th
 
 This project was bootstrapped with the command line [create-react-app](https://github.com/facebook/create-react-app).  
 
-
-## Security
-For security reasons, you must create a personal access token in Github. Only through it, you could access the Github API properly.
-After that, you also have to change one line of code assigning the value of the token to one constant called  
-GITHUB_PERSONAL_ACCESS_TOKEN (in the "index.tsx" file).
-
-Here is the link you should use to create your Personal Acess Token no Github:
-https://github.com/settings/tokens
-
-Why is that weird thing necessary? 
-Store tokens hardcoded within source files is a bad practice (Security)
-In actual systems, we would use 3 layers for that.  
-The right place to solve that kind of problem is on the backend side.
-One solution possible, only to mention one of them,  is to store the token in environment variables in the server. 
-
-As this app will run in the browser. We can't access the values of environment variables.  
-This App doesn't have a server system that is owned by us.  
-It accesses a server, but this server is owned by Github where we don't have access.
    
 ### Domain Driven Design - DDD
 

@@ -8,11 +8,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache, ApolloLink, HttpLink, from
 
 const GITHUB_GRAPHQL_URL = 'https://api.github.com/graphql'
 
-// TOKEN must have a valid personal token value from Github
-// how does this tokem look like: 07c4ffcf0cc9307f0207e51a2f9648699157b83f
-// 40 characteres 
-const GITHUB_PERSONAL_ACCESS_TOKEN = 'token value'
-
+const GITHUB_PERSONAL_ACCESS_TOKEN = process.env.REACT_APP_GITHUB_TOKEN
 
 const httpLink = new HttpLink({uri: GITHUB_GRAPHQL_URL})
 
